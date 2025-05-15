@@ -5,202 +5,297 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact RatePay</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+        :root {
+            --primary: #00A3E0;
+            --primary-dark: #0085B7;
+            --text: #333333;
+            --light-gray: #f8f9fa;
+            --border: #dee2e6;
+            --error: #dc3545;
         }
         
-        .form-container {
-            background: #f9f9f9;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #f5f7fa;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        
+        .card-header {
+            background: var(--primary);
+            color: white;
+            padding: 25px 30px;
+        }
+        
+        .card-header h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .card-header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .card-body {
             padding: 30px;
-            border-radius: 8px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 25px;
         }
         
         .form-group {
             margin-bottom: 20px;
         }
         
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
         label {
             display: block;
             margin-bottom: 8px;
-            font-weight: bold;
+            font-weight: 500;
+            color: #555;
+            font-size: 15px;
         }
         
-        .required:after {
+        .required label:after {
             content: " *";
-            color: red;
+            color: var(--error);
         }
         
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
+        input,
         select,
         textarea {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 15px;
+            transition: all 0.3s;
+            background-color: var(--light-gray);
+        }
+        
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 163, 224, 0.2);
+            background-color: white;
+        }
+        
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 14px;
         }
         
         textarea {
-            min-height: 100px;
+            min-height: 120px;
+            resize: vertical;
         }
         
-        .submit-btn {
-            background-color: #00A3E0;
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
             color: white;
             border: none;
-            padding: 12px 24px;
+            padding: 14px 28px;
             font-size: 16px;
-            border-radius: 4px;
+            font-weight: 500;
+            border-radius: 6px;
             cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
         }
         
-        .form-row {
-            display: flex;
-            gap: 20px;
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
         }
         
-        .form-col {
-            flex: 1;
+        .btn-block {
+            display: block;
+            width: 100%;
         }
         
-        @media (max-width: 600px) {
-            .form-row {
-                flex-direction: column;
-                gap: 0;
+        .text-center {
+            text-align: center;
+        }
+        
+        .note {
+            font-size: 14px;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .card-header {
+                padding: 20px;
+            }
+            
+            .card-body {
+                padding: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
-            <input type="hidden" name="oid" value="00DgK000003SYg9">
-            <input type="hidden" name="retURL" value="https://madhava-chowdappa.github.io/ratepay_thank_you_form/">
-            
-            <!-- Hidden fields for Salesforce -->
-            <input type="hidden" name="lead_source" value="Web">
-            <input type="hidden" name="rating" id="lead_rating" value="Warm">
-            
-            <!-- Row 1 -->
-            <div class="form-row">
-                <div class="form-col">
-                    <div class="form-group">
-                        <label for="first_name" class="required">First name</label>
-                        <input id="first_name" name="first_name" type="text" required>
-                    </div>
-                </div>
-                <div class="form-col">
-                    <div class="form-group">
-                        <label for="last_name" class="required">Last name</label>
-                        <input id="last_name" name="last_name" type="text" required>
-                    </div>
-                </div>
-                <div class="form-col">
-                    <div class="form-group">
-                        <label for="email" class="required">E-mail</label>
-                        <input id="email" name="email" type="email" required>
-                    </div>
-                </div>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>Interested in working with us?</h1>
+                <p>Get in touch and hear from our team</p>
             </div>
             
-            <!-- Row 2 -->
-            <div class="form-row">
-                <div class="form-col">
-                    <div class="form-group">
-                        <label for="company" class="required">Business</label>
-                        <input id="company" name="company" type="text" required>
+            <div class="card-body">
+                <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+                    <!-- Hidden Fields -->
+                    <input type="hidden" name="oid" value="00DgK000003SYg9">
+                    <input type="hidden" name="retURL" value="https://madhava-chowdappa.github.io/ratepay_thank_you_form/">
+                    <input type="hidden" name="lead_source" value="Web">
+                    <input type="hidden" name="rating" id="lead_rating" value="Warm">
+                    
+                    <!-- Personal Information -->
+                    <div class="form-grid">
+                        <div class="form-group required">
+                            <label for="first_name">First name</label>
+                            <input id="first_name" name="first_name" type="text" required>
+                        </div>
+                        
+                        <div class="form-group required">
+                            <label for="last_name">Last name</label>
+                            <input id="last_name" name="last_name" type="text" required>
+                        </div>
+                        
+                        <div class="form-group required">
+                            <label for="email">Email</label>
+                            <input id="email" name="email" type="email" required>
+                        </div>
                     </div>
-                </div>
-                <div class="form-col">
-                    <div class="form-group">
-                        <label for="url" class="required">Website</label>
-                        <input id="url" name="url" type="url" required>
+                    
+                    <!-- Business Information -->
+                    <div class="form-grid">
+                        <div class="form-group required">
+                            <label for="company">Business</label>
+                            <input id="company" name="company" type="text" required>
+                        </div>
+                        
+                        <div class="form-group required">
+                            <label for="url">Website</label>
+                            <input id="url" name="url" type="url" required>
+                            <p class="note">Please include http:// or https://</p>
+                        </div>
+                        
+                        <div class="form-group required">
+                            <label for="phone">Telephone</label>
+                            <input id="phone" name="phone" type="tel" required>
+                        </div>
                     </div>
-                </div>
-                <div class="form-col">
-                    <div class="form-group">
-                        <label for="phone" class="required">Telephone</label>
-                        <input id="phone" name="phone" type="tel" required>
+                    
+                    <!-- Technical Information -->
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="00NgK000010usGX">Shopsoftware</label>
+                            <select id="00NgK000010usGX" name="00NgK000010usGX">
+                                <option value="">-- Select --</option>
+                                <option value="In-house solution">In-house solution</option>
+                                <option value="Magento 1">Magento 1</option>
+                                <option value="Magento 2">Magento 2</option>
+                                <option value="Oxide 5">Oxide 5</option>
+                                <option value="Oxide 6">Oxide 6</option>
+                                <option value="WooCommerce">WooCommerce</option>
+                                <option value="Shopware 5">Shopware 5</option>
+                                <option value="Shopware 6">Shopware 6</option>
+                                <option value="Gambia">Gambia</option>
+                                <option value="Speaker">Speaker</option>
+                                <option value="xt:Commerce">xt:Commerce</option>
+                                <option value="Shopify">Shopify</option>
+                                <option value="Adyen HPP">Adyen HPP</option>
+                                <option value="JTL">JTL</option>
+                                <option value="RP – Payment Page">RP – Payment Page</option>
+                                <option value="Drupal">Drupal</option>
+                                <option value="Prestashop">Prestashop</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="00NgK000010ustF">Payment Service Provider</label>
+                            <select id="00NgK000010ustF" name="00NgK000010ustF">
+                                <option value="">-- Select --</option>
+                                <option value="PAYONE">PAYONE</option>
+                                <option value="CompuTop">CompuTop</option>
+                                <option value="ConCardis">ConCardis</option>
+                                <option value="Adyen">Adyen</option>
+                                <option value="Nets">Nets</option>
+                                <option value="Paynova">Paynova</option>
+                                <option value="Kallithea">Kallithea</option>
+                                <option value="Payoneer">Payoneer</option>
+                                <option value="Unzer">Unzer</option>
+                                <option value="Ingenico">Ingenico</option>
+                                <option value="Stripe">Stripe</option>
+                                <option value="Mollie">Mollie</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="00NgK000010unK7">Annual online sales</label>
+                            <select id="00NgK000010unK7" name="00NgK000010unK7">
+                                <option value="">-- Select --</option>
+                                <option value="Under €5 million">Under €5 million</option>
+                                <option value="more than 5 million €">more than 5 million €</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
+                    
+                    <!-- Additional Information -->
+                    <div class="form-group">
+                        <label for="description"><strong>Remark</strong></label>
+                        <textarea id="description" name="description" placeholder="Please share any additional information about your inquiry"></textarea>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-block">Submit Request</button>
+                        <p class="note">We'll get back to you within 24 hours</p>
+                    </div>
+                </form>
             </div>
-            
-            <!-- Row 3 -->
-            <div class="form-row">
-                <div class="form-col">
-                    <div class="form-group">
-                        <label for="00NgK000010usGX">Shopsoftware</label>
-                        <select id="00NgK000010usGX" name="00NgK000010usGX">
-                            <option value="">--None--</option>
-                            <option value="In-house solution">In-house solution</option>
-                            <option value="Magento 1">Magento 1</option>
-                            <option value="Magento 2">Magento 2</option>
-                            <option value="Oxide 5">Oxide 5</option>
-                            <option value="Oxide 6">Oxide 6</option>
-                            <option value="WooCommerce">WooCommerce</option>
-                            <option value="Shopware 5">Shopware 5</option>
-                            <option value="Shopware 6">Shopware 6</option>
-                            <option value="Gambia">Gambia</option>
-                            <option value="Speaker">Speaker</option>
-                            <option value="xt:Commerce">xt:Commerce</option>
-                            <option value="Shopify">Shopify</option>
-                            <option value="Adyen HPP">Adyen HPP</option>
-                            <option value="JTL">JTL</option>
-                            <option value="RP – Payment Page">RP – Payment Page</option>
-                            <option value="Drupal">Drupal</option>
-                            <option value="Prestashop">Prestashop</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-col">
-                    <div class="form-group">
-                        <label for="00NgK000010ustF">Payment Service Provider</label>
-                        <select id="00NgK000010ustF" name="00NgK000010ustF">
-                            <option value="">--None--</option>
-                            <option value="PAYONE">PAYONE</option>
-                            <option value="CompuTop">CompuTop</option>
-                            <option value="ConCardis">ConCardis</option>
-                            <option value="Adyen">Adyen</option>
-                            <option value="Nets">Nets</option>
-                            <option value="Paynova">Paynova</option>
-                            <option value="Kallithea">Kallithea</option>
-                            <option value="Payoneer">Payoneer</option>
-                            <option value="Unzer">Unzer</option>
-                            <option value="Ingenico">Ingenico</option>
-                            <option value="Stripe">Stripe</option>
-                            <option value="Mollie">Mollie</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-col">
-                    <div class="form-group">
-                        <label for="00NgK000010unK7">Annual online sales</label>
-                        <select id="00NgK000010unK7" name="00NgK000010unK7">
-                            <option value="">--None--</option>
-                            <option value="Under €5 million">Under €5 million</option>
-                            <option value="more than 5 million €">more than 5 million €</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Remark -->
-            <div class="form-group">
-                <label for="description"><strong>Remark</strong></label>
-                <textarea id="description" name="description"></textarea>
-            </div>
-            
-            <button type="submit" class="submit-btn">Submit</button>
-        </form>
+        </div>
     </div>
 
     <script>
@@ -211,9 +306,10 @@
             // Update rating when annual sales changes
             annualSales.addEventListener('change', function() {
                 leadRating.value = this.value === "more than 5 million €" ? "Hot" : "Warm";
+                console.log('Lead rating updated to:', leadRating.value);
             });
             
-            // Ensure rating is correct on form submission
+            // Final check before submission
             document.querySelector('form').addEventListener('submit', function() {
                 if (annualSales.value === "more than 5 million €") {
                     leadRating.value = "Hot";
