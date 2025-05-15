@@ -9,21 +9,21 @@
             font-family: Arial, sans-serif;
             line-height: 1.5;
             color: #333;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 30px;
         }
         
         .contact-header h1 {
             color: #333;
             font-size: 24px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         
         .contact-header p {
             color: #666;
             font-size: 14px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         
         .contact-header strong {
@@ -32,18 +32,19 @@
         
         .form-table {
             width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
+            border-collapse: separate;
+            border-spacing: 15px;
+            margin-bottom: 25px;
         }
         
         .form-table td {
-            padding: 8px;
+            padding: 0;
             vertical-align: top;
         }
         
         label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-weight: bold;
             font-size: 14px;
         }
@@ -59,35 +60,51 @@
         input[type="url"],
         select {
             width: 100%;
-            padding: 8px;
+            padding: 10px 12px;
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 14px;
+            margin-bottom: 5px;
         }
         
         textarea {
             width: 100%;
-            padding: 8px;
+            padding: 12px;
             border: 1px solid #ddd;
             border-radius: 4px;
-            min-height: 100px;
+            min-height: 120px;
             font-size: 14px;
+            margin-top: 5px;
         }
         
         .submit-btn {
             background-color: #00A3E0;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 25px;
             font-size: 16px;
             border-radius: 4px;
             cursor: pointer;
             display: block;
-            margin: 0 auto;
+            margin: 30px auto 0;
+            width: 200px;
         }
         
         .submit-btn:hover {
             background-color: #0085B7;
+        }
+        
+        .form-section {
+            margin-bottom: 25px;
+        }
+        
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 14px;
+            padding-right: 30px;
         }
     </style>
 </head>
@@ -106,81 +123,101 @@
         <table class="form-table">
             <tr>
                 <td>
-                    <label for="first_name" class="required">First name</label>
-                    <input id="first_name" name="first_name" type="text" required>
+                    <div class="form-section">
+                        <label for="first_name" class="required">First name</label>
+                        <input id="first_name" name="first_name" type="text" required>
+                    </div>
                 </td>
                 <td>
-                    <label for="last_name" class="required">Last name</label>
-                    <input id="last_name" name="last_name" type="text" required>
+                    <div class="form-section">
+                        <label for="last_name" class="required">Last name</label>
+                        <input id="last_name" name="last_name" type="text" required>
+                    </div>
                 </td>
                 <td>
-                    <label for="email" class="required">E-mail</label>
-                    <input id="email" name="email" type="email" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="company" class="required">Business</label>
-                    <input id="company" name="company" type="text" required>
-                </td>
-                <td>
-                    <label for="website" class="required">Website</label>
-                    <input id="website" name="website" type="url" required>
-                </td>
-                <td>
-                    <label for="phone" class="required">Telephone</label>
-                    <input id="phone" name="phone" type="tel" required>
+                    <div class="form-section">
+                        <label for="email" class="required">E-mail</label>
+                        <input id="email" name="email" type="email" required>
+                    </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label for="00NgK000010usGX">Shopsoftware</label>
-                    <select id="00NgK000010usGX" name="00NgK000010usGX" title="Shopsoftware">
-                        <option value="">--None--</option>
-                        <option value="In-house solution">In-house solution</option>
-                        <option value="Magento 1">Magento 1</option>
-                        <option value="Magento 2">Magento 2</option>
-                        <option value="Oxide 5">Oxide 5</option>
-                        <option value="Oxide 6">Oxide 6</option>
-                        <option value="WooCommerce">WooCommerce</option>
-                        <option value="Shopware 5">Shopware 5</option>
-                        <option value="Shopware 6">Shopware 6</option>
-                        <option value="Gambia">Gambia</option>
-                        <option value="Speaker">Speaker</option>
-                        <option value="xt:Commerce">xt:Commerce</option>
-                        <option value="Shopify">Shopify</option>
-                        <option value="Adyen HPP">Adyen HPP</option>
-                        <option value="JTL">JTL</option>
-                        <option value="RP – Payment Page">RP – Payment Page</option>
-                        <option value="Drupal">Drupal</option>
-                        <option value="Prestashop">Prestashop</option>
-                        <option value="Other">Other</option>
-                    </select>
+                    <div class="form-section">
+                        <label for="company" class="required">Business</label>
+                        <input id="company" name="company" type="text" required>
+                    </div>
                 </td>
                 <td>
-                    <label for="00NgK000010ustF">Payment Service Provider</label>
-                    <select id="00NgK000010ustF" name="00NgK000010ustF">
-                        <option value="">-- Select --</option>
-                        <option value="PAYONE">PAYONE</option>
-                        <option value="Adyen">Adyen</option>
-                        <option value="Stripe">Stripe</option>
-                        <option value="Mollie">Mollie</option>
-                        <option value="Other">Other</option>
-                    </select>
+                    <div class="form-section">
+                        <label for="website" class="required">Website</label>
+                        <input id="website" name="website" type="url" required>
+                    </div>
                 </td>
                 <td>
-                    <label for="00NgK000010unK7">Annual online sales</label>
-                    <select id="00NgK000010unK7" name="00NgK000010unK7" onchange="updateLeadRating(this)">
-                        <option value="">-- Select --</option>
-                        <option value="Under €5 million">Under €5 million</option>
-                        <option value="more than 5 million €">more than 5 million €</option>
-                    </select>
+                    <div class="form-section">
+                        <label for="phone" class="required">Telephone</label>
+                        <input id="phone" name="phone" type="tel" required>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-section">
+                        <label for="00NgK000010usGX">Shopsoftware</label>
+                        <select id="00NgK000010usGX" name="00NgK000010usGX" title="Shopsoftware">
+                            <option value="">--None--</option>
+                            <option value="In-house solution">In-house solution</option>
+                            <option value="Magento 1">Magento 1</option>
+                            <option value="Magento 2">Magento 2</option>
+                            <option value="Oxide 5">Oxide 5</option>
+                            <option value="Oxide 6">Oxide 6</option>
+                            <option value="WooCommerce">WooCommerce</option>
+                            <option value="Shopware 5">Shopware 5</option>
+                            <option value="Shopware 6">Shopware 6</option>
+                            <option value="Gambia">Gambia</option>
+                            <option value="Speaker">Speaker</option>
+                            <option value="xt:Commerce">xt:Commerce</option>
+                            <option value="Shopify">Shopify</option>
+                            <option value="Adyen HPP">Adyen HPP</option>
+                            <option value="JTL">JTL</option>
+                            <option value="RP – Payment Page">RP – Payment Page</option>
+                            <option value="Drupal">Drupal</option>
+                            <option value="Prestashop">Prestashop</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-section">
+                        <label for="00NgK000010ustF">Payment Service Provider</label>
+                        <select id="00NgK000010ustF" name="00NgK000010ustF">
+                            <option value="">-- Select --</option>
+                            <option value="PAYONE">PAYONE</option>
+                            <option value="Adyen">Adyen</option>
+                            <option value="Stripe">Stripe</option>
+                            <option value="Mollie">Mollie</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-section">
+                        <label for="00NgK000010unK7">Annual online sales</label>
+                        <select id="00NgK000010unK7" name="00NgK000010unK7" onchange="updateLeadRating(this)">
+                            <option value="">-- Select --</option>
+                            <option value="Under €5 million">Under €5 million</option>
+                            <option value="more than 5 million €">more than 5 million €</option>
+                        </select>
+                    </div>
                 </td>
             </tr>
         </table>
         
-        <label for="description"><strong>remark</strong></label>
-        <textarea id="description" name="description"></textarea>
+        <div class="form-section">
+            <label for="description"><strong>remark</strong></label>
+            <textarea id="description" name="description"></textarea>
+        </div>
         
         <button type="submit" class="submit-btn">Submit</button>
     </form>
