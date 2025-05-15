@@ -9,164 +9,86 @@
             font-family: Arial, sans-serif;
             line-height: 1.6;
             color: #333;
-            max-width: 1000px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 40px;
-            background-color: #f9f9f9;
-        }
-        
-        .contact-header h1 {
-            color: #333;
-            font-size: 28px;
-            margin-bottom: 15px;
-        }
-        
-        .contact-header p {
-            color: #666;
-            font-size: 16px;
-            margin-bottom: 40px;
-            line-height: 1.5;
-        }
-        
-        .contact-header strong {
-            font-weight: bold;
+            padding: 20px;
         }
         
         .form-container {
-            background: white;
-            padding: 40px;
+            background: #f9f9f9;
+            padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-        }
-        
-        .form-row {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 0 -20px 30px -20px;
-        }
-        
-        .form-col {
-            flex: 0 0 calc(33.333% - 40px);
-            margin: 0 20px;
         }
         
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         
         label {
             display: block;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             font-weight: bold;
-            font-size: 15px;
-            color: #555;
         }
         
         .required:after {
             content: " *";
-            color: #f00;
+            color: red;
         }
         
         input[type="text"],
         input[type="email"],
         input[type="tel"],
-        input[type="url"],
-        select {
+        select,
+        textarea {
             width: 100%;
-            padding: 14px;
+            padding: 10px;
             border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 15px;
-            transition: all 0.3s;
-            background-color: #fafafa;
-        }
-        
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        input[type="tel"]:focus,
-        input[type="url"]:focus,
-        select:focus {
-            outline: none;
-            border-color: #00A3E0;
-            box-shadow: 0 0 0 3px rgba(0,163,224,0.1);
-            background-color: white;
+            border-radius: 4px;
+            font-size: 16px;
         }
         
         textarea {
-            width: 100%;
-            padding: 14px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            min-height: 150px;
-            font-size: 15px;
-            line-height: 1.5;
-            background-color: #fafafa;
-        }
-        
-        textarea:focus {
-            outline: none;
-            border-color: #00A3E0;
-            box-shadow: 0 0 0 3px rgba(0,163,224,0.1);
-            background-color: white;
-        }
-        
-        select {
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 16px center;
-            background-size: 16px;
-            padding-right: 40px;
+            min-height: 100px;
         }
         
         .submit-btn {
             background-color: #00A3E0;
             color: white;
             border: none;
-            padding: 16px 32px;
+            padding: 12px 24px;
             font-size: 16px;
-            font-weight: 600;
-            border-radius: 6px;
+            border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.3s;
-            display: block;
-            margin: 40px auto 0;
-            width: 220px;
         }
         
-        .submit-btn:hover {
-            background-color: #0085B7;
+        .form-row {
+            display: flex;
+            gap: 20px;
         }
         
-        @media (max-width: 768px) {
-            .form-col {
-                flex: 0 0 100%;
-                margin-bottom: 25px;
-            }
-            
-            body {
-                padding: 20px;
-            }
-            
-            .form-container {
-                padding: 30px;
+        .form-col {
+            flex: 1;
+        }
+        
+        @media (max-width: 600px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
             }
         }
     </style>
 </head>
 <body>
-    <div class="contact-header">
-        <h1>Interested in working with us? Get in touch and hear from us.</h1>
-        <p><strong>Please note:</strong> In case you are a shopper, please use the contact form above. Thank you.</p>
-    </div>
-    
     <div class="form-container">
-        <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DgK000003SYg9" method="POST" onsubmit="setLeadRating()">
+        <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
             <input type="hidden" name="oid" value="00DgK000003SYg9">
             <input type="hidden" name="retURL" value="https://madhava-chowdappa.github.io/ratepay_thank_you_form/">
-            <input type="hidden" name="lead_source" value="Web">
-            <input type="hidden" name="lead_rating" id="lead_rating" value="Warm">
             
+            <!-- Hidden fields for Salesforce -->
+            <input type="hidden" name="lead_source" value="Web">
+            <input type="hidden" name="rating" id="lead_rating" value="Warm">
+            
+            <!-- Row 1 -->
             <div class="form-row">
                 <div class="form-col">
                     <div class="form-group">
@@ -174,14 +96,12 @@
                         <input id="first_name" name="first_name" type="text" required>
                     </div>
                 </div>
-                
                 <div class="form-col">
                     <div class="form-group">
                         <label for="last_name" class="required">Last name</label>
                         <input id="last_name" name="last_name" type="text" required>
                     </div>
                 </div>
-                
                 <div class="form-col">
                     <div class="form-group">
                         <label for="email" class="required">E-mail</label>
@@ -190,6 +110,7 @@
                 </div>
             </div>
             
+            <!-- Row 2 -->
             <div class="form-row">
                 <div class="form-col">
                     <div class="form-group">
@@ -197,14 +118,12 @@
                         <input id="company" name="company" type="text" required>
                     </div>
                 </div>
-                
                 <div class="form-col">
                     <div class="form-group">
-                        <label for="website" class="required">Website</label>
-                        <input id="website" name="website" type="url" required>
+                        <label for="url" class="required">Website</label>
+                        <input id="url" name="url" type="url" required>
                     </div>
                 </div>
-                
                 <div class="form-col">
                     <div class="form-group">
                         <label for="phone" class="required">Telephone</label>
@@ -213,11 +132,12 @@
                 </div>
             </div>
             
+            <!-- Row 3 -->
             <div class="form-row">
                 <div class="form-col">
                     <div class="form-group">
                         <label for="00NgK000010usGX">Shopsoftware</label>
-                        <select id="00NgK000010usGX" name="00NgK000010usGX" title="Shopsoftware">
+                        <select id="00NgK000010usGX" name="00NgK000010usGX">
                             <option value="">--None--</option>
                             <option value="In-house solution">In-house solution</option>
                             <option value="Magento 1">Magento 1</option>
@@ -240,26 +160,32 @@
                         </select>
                     </div>
                 </div>
-                
                 <div class="form-col">
                     <div class="form-group">
                         <label for="00NgK000010ustF">Payment Service Provider</label>
                         <select id="00NgK000010ustF" name="00NgK000010ustF">
-                            <option value="">-- Select --</option>
+                            <option value="">--None--</option>
                             <option value="PAYONE">PAYONE</option>
+                            <option value="CompuTop">CompuTop</option>
+                            <option value="ConCardis">ConCardis</option>
                             <option value="Adyen">Adyen</option>
+                            <option value="Nets">Nets</option>
+                            <option value="Paynova">Paynova</option>
+                            <option value="Kallithea">Kallithea</option>
+                            <option value="Payoneer">Payoneer</option>
+                            <option value="Unzer">Unzer</option>
+                            <option value="Ingenico">Ingenico</option>
                             <option value="Stripe">Stripe</option>
                             <option value="Mollie">Mollie</option>
                             <option value="Other">Other</option>
                         </select>
                     </div>
                 </div>
-                
                 <div class="form-col">
                     <div class="form-group">
                         <label for="00NgK000010unK7">Annual online sales</label>
-                        <select id="00NgK000010unK7" name="00NgK000010unK7" onchange="updateLeadRating(this)">
-                            <option value="">-- Select --</option>
+                        <select id="00NgK000010unK7" name="00NgK000010unK7">
+                            <option value="">--None--</option>
                             <option value="Under €5 million">Under €5 million</option>
                             <option value="more than 5 million €">more than 5 million €</option>
                         </select>
@@ -267,8 +193,9 @@
                 </div>
             </div>
             
+            <!-- Remark -->
             <div class="form-group">
-                <label for="description"><strong>remark</strong></label>
+                <label for="description"><strong>Remark</strong></label>
                 <textarea id="description" name="description"></textarea>
             </div>
             
@@ -277,20 +204,24 @@
     </div>
 
     <script>
-        function updateLeadRating(selectElement) {
-            const leadRatingField = document.getElementById('lead_rating');
-            if (selectElement.value === "more than 5 million €") {
-                leadRatingField.value = "Hot";
-            } else {
-                leadRatingField.value = "Warm";
-            }
-        }
-
-        function setLeadRating() {
-            const revenueSelect = document.querySelector('[name="00NgK000010unK7"]');
-            updateLeadRating(revenueSelect);
-            return true;
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const annualSales = document.getElementById('00NgK000010unK7');
+            const leadRating = document.getElementById('lead_rating');
+            
+            // Update rating when annual sales changes
+            annualSales.addEventListener('change', function() {
+                leadRating.value = this.value === "more than 5 million €" ? "Hot" : "Warm";
+            });
+            
+            // Ensure rating is correct on form submission
+            document.querySelector('form').addEventListener('submit', function() {
+                if (annualSales.value === "more than 5 million €") {
+                    leadRating.value = "Hot";
+                } else {
+                    leadRating.value = "Warm";
+                }
+            });
+        });
     </script>
 </body>
 </html>
